@@ -7,6 +7,8 @@ if [ -n "${INPUT_SPLIT_DEPLOY_KEY}" ]; then
     chmod 0600 /root/.ssh/github
 fi
 
+git config --global --add safe.directory /github/workspace
+
 splitsh-lite --prefix="${INPUT_SPLIT_PREFIX}" --target=refs/heads/${INPUT_SPLIT} --scratch
 
 ORIGIN=`git remote get-url origin`
