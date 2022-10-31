@@ -1,4 +1,4 @@
-Splitsh-lite Github Action
+Splitsh-lite GitHub Action
 ==========================
 
 Synchronises a split repository using splitsh-lite
@@ -10,13 +10,13 @@ Its primary use is to create a split branch and push it to the parent.
 
 The action requires the following inputs:
 
-Key                | Description
------------------- | -----------------------------------------------------------
-`split` *          | Subtree repository name (including owner)
-`split_deploy_key` | The private key part of a Deploy Key on the split repository
-`split_branch`     | Branch name to split (default `main`)
-`split_prefix`     | The directory to perform the split on
-`split_only_if`    | (`0`, `1` or repository name, default `1`) Pushes only if the origin is this, or `1`
+| Key                | Description                                                                          |
+|--------------------|--------------------------------------------------------------------------------------|
+| `split` *          | Subtree repository name (including owner)                                            |
+| `split_deploy_key` | The private key part of a Deploy Key on the split repository                         |
+| `split_branch`     | Branch name to split (default `main`)                                                |
+| `split_prefix`     | The directory to perform the split on                                                |
+| `split_only_if`    | (`0`, `1` or repository name, default `1`) Pushes only if the origin is this, or `1` |
 
 The * indicates mandatory input.
 
@@ -39,7 +39,7 @@ jobs:
                     fetch-depth: 0
             -
                 name: Release
-                uses: antalaron/action-splitsh@master
+                uses: elephox-dev/action-splitsh@master
                 with:
                     split: 'owner/sub-repo'
                     split_deploy_key: ${{ secrets.GITHUB_SSH_KEY }}

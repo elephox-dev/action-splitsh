@@ -9,15 +9,15 @@ fi
 
 git config --global --add safe.directory /github/workspace
 
-splitsh-lite --prefix="${INPUT_SPLIT_PREFIX}" --target=refs/heads/${INPUT_SPLIT} --scratch
+splitsh-lite --prefix="${INPUT_SPLIT_PREFIX}" --target="refs/heads/${INPUT_SPLIT}" --scratch
 
-ORIGIN=`git remote get-url origin`
+ORIGIN=$(git remote get-url origin)
 
 if [ -n "${INPUT_SPLIT_DEPLOY_KEY}" ] && \
     [ -n "${INPUT_SPLIT}" ] && \
     {  [ "1" = "${INPUT_SPLIT_ONLY_IF:-1}" ] || [ "https://github.com/${INPUT_SPLIT_ONLY_IF:-1}" = "$ORIGIN" ]; }; then
-    git remote add split github:${INPUT_SPLIT}
-    git push -f -u split ${INPUT_SPLIT}:${INPUT_SPLIT_BRANCH:-main}
+    git remote add split "github:${INPUT_SPLIT}"
+    git push -f -u split "${INPUT_SPLIT}:${INPUT_SPLIT_BRANCH:-main}"
 fi
 
 git remote rm split
